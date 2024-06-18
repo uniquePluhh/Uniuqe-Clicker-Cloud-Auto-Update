@@ -103,7 +103,7 @@ if /i "%input%"=="1" (
 )
 
 :shops
-set /a "specialoffer?=%random% %% 2"
+set /a "specialoffer?=%random% %% 50"
 if "%specialoffer?%"=="1" (
     set /a "specialoffercp=%random% %% 99 + 1"
     set buyit?=yes
