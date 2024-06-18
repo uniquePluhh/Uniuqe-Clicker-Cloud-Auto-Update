@@ -113,7 +113,7 @@ if "%specialoffer?%"=="1" (
 )
 cls 
 echo .                      ======================
-echo .                      barrys shop of wonders
+echo .                      barrys shop of wonders  README!!!  before buying anything first buy number #3 or #1,2,9,0 wont work
 echo .                      ======================
 echo .                      Clicks, %clicks%
 echo . 
