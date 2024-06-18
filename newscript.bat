@@ -51,7 +51,7 @@ REM Function to update the script
     if exist %tempFile% (
         echo Update downloaded successfully.
         REM Replace the current script with the new one
-        copy /y %tempFile% "%~f0"
+        copy /y %tempFile% "%~f0" > nul
         echo Update applied. Restarting the script...
         echo. > %updateFlag%
         REM Restart the script
@@ -74,7 +74,7 @@ cls
 echo .                      ======================
 echo .                          unique clicker
 echo .                      ======================
-echo .                      Cp, if here worked
+echo .                      Cp, meow :3
 echo .                      %cp%
 echo .                      clicks,        
 echo .                      %clicks%              
