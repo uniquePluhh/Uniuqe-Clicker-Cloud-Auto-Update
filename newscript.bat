@@ -74,7 +74,7 @@ cls
 echo .                      ======================
 echo .                          unique clicker
 echo .                      ======================
-echo .                      Cp, meow :3
+echo .                      Cp, :3
 echo .                      %cp%
 echo .                      clicks,        
 echo .                      %clicks%              
