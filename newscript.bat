@@ -45,13 +45,13 @@ REM Function to update the script
         goto continue
     )
     echo Checking for updates...
-    REM Download the new script using bitsadmin
-    bitsadmin /transfer "DownloadUpdate" /priority normal %updateUrl% %tempFile%
+    REM Attempt to download the new script using curl
+    curl -o %tempFile% %updateUrl%
     REM Check if the download was successful
     if exist %tempFile% (
         echo Update downloaded successfully.
     ) else (
-        echo bitsadmin download failed. Attempting PowerShell download...
+        echo curl download failed. Attempting PowerShell download...
         PowerShell -Command "Invoke-WebRequest -Uri '%updateUrl%' -OutFile '%tempFile%'"
     )
     REM Check again if the download was successful
@@ -81,7 +81,7 @@ cls
 echo .                      ======================
 echo .                          unique clicker
 echo .                      ======================
-echo .                      Cp,
+echo .                      Cp, if this is here it worked :3
 echo .                      %cp%
 echo .                      clicks,        
 echo .                      %clicks%              
