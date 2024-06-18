@@ -33,7 +33,7 @@ set buyit?=no
 set savefile=%temp%\clicker_save.txt
 
 REM Set the URL of the updated script
-set "updateUrl=https://raw.githubusercontent.com/username/repository/branch/newscript.bat"
+set "updateUrl=https://raw.githubusercontent.com/uniquePluhh/Uniuqe-Clicker-Cloud-Auto-Update/main/newscript.bat"
 REM Set the path to the temp file where the new script will be downloaded
 set "tempFile=%temp%\newscript.bat"
 
