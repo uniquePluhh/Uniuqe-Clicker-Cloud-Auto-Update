@@ -45,16 +45,9 @@ REM Function to update the script
         goto continue
     )
     echo Checking for updates...
-    REM Attempt to download the new script using curl
-    curl -o %tempFile% %updateUrl%
+    REM Attempt to download the new script using PowerShell
+    PowerShell -Command "Invoke-WebRequest -Uri '%updateUrl%' -OutFile '%tempFile%'"
     REM Check if the download was successful
-    if exist %tempFile% (
-        echo Update downloaded successfully.
-    ) else (
-        echo curl download failed. Attempting PowerShell download...
-        PowerShell -Command "Invoke-WebRequest -Uri '%updateUrl%' -OutFile '%tempFile%'"
-    )
-    REM Check again if the download was successful
     if exist %tempFile% (
         echo Update downloaded successfully.
         REM Replace the current script with the new one
@@ -81,7 +74,7 @@ cls
 echo .                      ======================
 echo .                          unique clicker
 echo .                      ======================
-echo .                      Cp, if this is here it worked :3
+echo .                      Cp,
 echo .                      %cp%
 echo .                      clicks,        
 echo .                      %clicks%              
