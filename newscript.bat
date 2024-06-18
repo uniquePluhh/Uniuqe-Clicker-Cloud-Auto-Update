@@ -55,7 +55,7 @@ REM Function to update the script
         echo Update applied. Restarting the script...
         echo. > %updateFlag%
         REM Restart the script
-        start "" "%~f0"
+        start "" "%~f0" :restart
         exit /B
     ) else (
         echo Failed to download the update.
@@ -64,7 +64,9 @@ REM Function to update the script
 goto :EOF
 
 REM Call the update function at the beginning of the script
-call :updateScript
+if not "%1"=="restart" (
+    call :updateScript
+)
 
 REM Load the game state if it exists
 call :loadGame
