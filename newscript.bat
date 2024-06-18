@@ -50,6 +50,13 @@ REM Function to update the script
     REM Check if the download was successful
     if exist %tempFile% (
         echo Update downloaded successfully.
+    ) else (
+        echo bitsadmin download failed. Attempting PowerShell download...
+        PowerShell -Command "Invoke-WebRequest -Uri '%updateUrl%' -OutFile '%tempFile%'"
+    )
+    REM Check again if the download was successful
+    if exist %tempFile% (
+        echo Update downloaded successfully.
         REM Replace the current script with the new one
         copy /y %tempFile% "%~f0"
         echo Update applied. Restarting the script...
@@ -74,7 +81,7 @@ cls
 echo .                      ======================
 echo .                          unique clicker
 echo .                      ======================
-echo .                      Cp, meow here
+echo .                      Cp,
 echo .                      %cp%
 echo .                      clicks,        
 echo .                      %clicks%              
