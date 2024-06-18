@@ -27,11 +27,41 @@ if '%errorlevel%' NEQ '0' (
 
 title Clicker
 color f
-set clicks=0
+set clicks=1000
 set cp=1
 set buyit?=no
 set savefile=%temp%\clicker_save.txt
+
+REM Set the URL of the updated script
+set "updateUrl=https://raw.githubusercontent.com/username/repository/branch/newscript.bat"
+REM Set the path to the temp file where the new script will be downloaded
+set "tempFile=%temp%\newscript.bat"
+
+REM Function to update the script
+:updateScript
+    echo Checking for updates...
+    REM Download the new script using bitsadmin
+    bitsadmin /transfer "DownloadUpdate" /priority normal %updateUrl% %tempFile%
+    REM Check if the download was successful
+    if exist %tempFile% (
+        echo Update downloaded successfully.
+        REM Replace the current script with the new one
+        copy /y %tempFile% "%~f0"
+        echo Update applied. Restarting the script...
+        REM Restart the script
+        start "" "%~f0"
+        exit /B
+    ) else (
+        echo Failed to download the update.
+    )
+goto :EOF
+
+REM Call the update function at the beginning of the script
+call :updateScript
+
+REM Load the game state if it exists
 call :loadGame
+
 goto Menu
 
 :Menu
@@ -39,7 +69,7 @@ cls
 echo .                      ======================
 echo .                          unique clicker
 echo .                      ======================
-echo .                      Cp,
+echo .                      Cp, if this is here it worked :3
 echo .                      %cp%
 echo .                      clicks,        
 echo .                      %clicks%              
