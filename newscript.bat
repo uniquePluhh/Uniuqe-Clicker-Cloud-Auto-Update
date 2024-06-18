@@ -31,6 +31,7 @@ set clicks=1000
 set cp=1
 set buyit?=no
 set savefile=%temp%\clicker_save.txt
+set updateFlag=%temp%\clicker_update.flag
 
 REM Set the URL of the updated script
 set "updateUrl=https://raw.githubusercontent.com/uniquePluhh/Uniuqe-Clicker-Cloud-Auto-Update/main/newscript.bat"
@@ -39,6 +40,10 @@ set "tempFile=%temp%\newscript.bat"
 
 REM Function to update the script
 :updateScript
+    if exist %updateFlag% (
+        del %updateFlag%
+        goto :EOF
+    )
     echo Checking for updates...
     REM Download the new script using bitsadmin
     bitsadmin /transfer "DownloadUpdate" /priority normal %updateUrl% %tempFile%
@@ -48,11 +53,13 @@ REM Function to update the script
         REM Replace the current script with the new one
         copy /y %tempFile% "%~f0"
         echo Update applied. Restarting the script...
+        echo. > %updateFlag%
         REM Restart the script
         start "" "%~f0"
         exit /B
     ) else (
         echo Failed to download the update.
+        pause >nul
     )
 goto :EOF
 
@@ -69,7 +76,7 @@ cls
 echo .                      ======================
 echo .                          unique clicker
 echo .                      ======================
-echo .                      Cp, gone
+echo .                      Cp,
 echo .                      %cp%
 echo .                      clicks,        
 echo .                      %clicks%              
