@@ -34,7 +34,7 @@ set savefile=%temp%\clicker_save.txt
 set updateFlag=%temp%\clicker_update.flag
 
 REM Set the URL of the updated script
-set "updateUrl=https://raw.githubusercontent.com/uniquePluhh/Uniuqe-Clicker-Cloud-Auto-Update/main/newscript.bat"
+set "updateUrl=https://raw.githubusercontent.com/username/repository/branch/newscript.bat"
 REM Set the path to the temp file where the new script will be downloaded
 set "tempFile=%temp%\newscript.bat"
 
@@ -42,7 +42,7 @@ REM Function to update the script
 :updateScript
     if exist %updateFlag% (
         del %updateFlag%
-        goto :EOF
+        goto continue
     )
     echo Checking for updates...
     REM Download the new script using bitsadmin
@@ -61,13 +61,9 @@ REM Function to update the script
         echo Failed to download the update.
         pause >nul
     )
-goto :EOF
+    goto :EOF
 
-REM Call the update function at the beginning of the script
-if not "%1"=="restart" (
-    call :updateScript
-)
-
+:continue
 REM Load the game state if it exists
 call :loadGame
 
@@ -78,7 +74,7 @@ cls
 echo .                      ======================
 echo .                          unique clicker
 echo .                      ======================
-echo .                      Cp, meow
+echo .                      Cp,
 echo .                      %cp%
 echo .                      clicks,        
 echo .                      %clicks%              
