@@ -1,4 +1,4 @@
-@echo off 
+@echo off
 
 :-------------------------------------
 REM BatchGotAdmin
@@ -70,11 +70,11 @@ call :loadGame
 goto Menu
 
 :Menu
-cls 
+cls
 echo .                      ======================
 echo .                          unique clicker
 echo .                      ======================
-echo .                      Cp, if this is here it worked
+echo .                      Cp, meow here
 echo .                      %cp%
 echo .                      clicks,        
 echo .                      %clicks%              
@@ -203,3 +203,8 @@ if exist "%savefile%" (
     )
 )
 goto :EOF
+
+:restart
+echo Restarting the script...
+call "%~f0" %*
+exit /B
