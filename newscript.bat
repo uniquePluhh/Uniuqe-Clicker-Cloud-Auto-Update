@@ -69,7 +69,7 @@ cls
 echo .                      ======================
 echo .                          unique clicker
 echo .                      ======================
-echo .                      Cp, if this is here it worked :3
+echo .                      Cp, gone
 echo .                      %cp%
 echo .                      clicks,        
 echo .                      %clicks%              
